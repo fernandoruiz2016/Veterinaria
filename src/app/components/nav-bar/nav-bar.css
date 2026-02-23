@@ -1,0 +1,18 @@
+.navBar {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 80px;
+    background-color: #7F00E0;
+    color: white;
+    height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    :host {
+        display: none;
+    }
+}
