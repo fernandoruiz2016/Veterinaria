@@ -7,16 +7,10 @@
 .layout {
     flex: 1;
     display: flex;
+    flex-direction: column;
 }
 
 .content {
     flex: 1;
     padding: 20px;
-    margin-left: 250px;
-}
-
-@media (max-width: 768px) {
-    .content {
-        margin-left: 0;
-    }
 }
