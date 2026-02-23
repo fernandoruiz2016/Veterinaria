@@ -7,3 +7,10 @@
     left: 0;
     top: 0;
 }
+
+@media (max-width: 768px) {
+    :host {
+        position: relative;
+        width: 100%;
+    }
+}
