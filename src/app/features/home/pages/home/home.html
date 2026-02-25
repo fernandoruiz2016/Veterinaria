@@ -1,8 +1,12 @@
-<h2>Resumen del día</h2>
-<div>
-    <p>1</p>
-    <p>2</p>
-    <p>3</p>
-</div>
-<h2>Citas programadas para hoy</h2>
-<table></table>
+<section class="resumen">
+    <h2>Resumen del día</h2>
+    <div class="cards">
+        <app-home-card [title]="'Citas de hoy'" [body]="citas" [cardColor]="'blue'"></app-home-card>
+        <app-home-card [title]="'Citas pendientes'" [body]="citasPendientes" [cardColor]="'#E38636'"></app-home-card>
+                <app-home-card [title]="'Pacientes nuevos'" [body]="pacientesNuevos" [cardColor]="'#00DC1F'"></app-home-card>
+    </div>
+</section>
+<section class="today">
+    <h2>Citas programadas para hoy</h2>
+    <table></table>
+</section>
