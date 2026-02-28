@@ -9,7 +9,7 @@
 <!-- Sidebar -->
 <nav class="sidebar" [class.open]="isOpen">
     <button type="button" class="btn btn-outline-light btn-cerrar" (click)="toggleMenu()">X</button>
-    <a routerLink="/inicio">Inicio</a>
-    <a routerLink="/ventas">Mascotas</a>
-    <a routerLink="/clientes">Citas</a>
+    <a routerLink="/" routerLinkActive="active">Inicio</a>
+    <a routerLink="pacientes" routerLinkActive="active">Mascotas</a>
+    <a routerLink="citas" routerLinkActive="active">Citas</a>
 </nav>
