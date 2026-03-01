@@ -5,4 +5,5 @@ export interface Cita {
     fecha: string;         // Formato 'YYYY-MM-DD'
     hora: string;          // Formato 'HH:mm'
     estado: 'Programada' | 'Atendida' | 'Cancelada' | 'No asistió'; // Estados definidos
+    comentarios?: string;
 }

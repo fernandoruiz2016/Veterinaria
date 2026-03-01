@@ -18,6 +18,13 @@
                 <input type="text" name="veterinario" [(ngModel)]="nuevaCita.veterinario" placeholder="Ej. Dr. Pérez"
                     required />
             </div>
+
+            <div class="form-group"> 
+                <label>Comentarios (Opcional)</label>
+                <textarea name="comentarios" [(ngModel)]="nuevaCita.comentarios"
+                    placeholder="Notas adicionales y consideraciones a tener en cuenta" rows="3">
+                </textarea>
+            </div>
         </div>
 
         <div class="row">

@@ -2,6 +2,7 @@
 .form-container {
     padding: 50px 20px 20px;
     border-radius: 12px;
+    box-sizing: border-box;
 }
 
 h2 {
@@ -19,13 +20,21 @@ form {
     margin-top: 50px;
 }
 
-.dropdowns {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+.dropdowns, .row {
+    display: grid;
+    /* Creamos 2 columnas de igual tamaño (1fr cada una) */
+    grid-template-columns: repeat(2, 1fr); 
+    /* Espaciado horizontal y vertical */
+    gap: 30px 50px; 
     width: 100%;
-    gap: 50px;
+    max-width: 900px; /* Ajusta según el ancho de tu contenedor */
+    margin: 0 auto;   /* Centra todo el bloque en la pantalla */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espacio entre el label y el input/select */
 }
 
 /* Grupos de Formulario */
@@ -34,8 +43,21 @@ form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* Por defecto ocupan todo el ancho disponible */
     max-width: 400px;
+}
+
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical; /* Permite cambiar el tamaño hacia abajo */
+    outline: none;
+}
+
+.form-group textarea:focus {
+    border-color: #7F00E0;
 }
 
 label {
@@ -71,14 +93,14 @@ input:focus {
 }
 
 /* Fila de Fecha y Hora */
-.row {
+/* .row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     width: 100%;
     gap: 50px;
-}
+} */
 
 /* Botones y Acciones */
 .actions {
@@ -149,6 +171,7 @@ input:focus {
 
     .dropdowns,
     .row {
+        display: flex;
         flex-direction: column;
         /* Apilar elementos uno sobre otro */
         gap: 15px;

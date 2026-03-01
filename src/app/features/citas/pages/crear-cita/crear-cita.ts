@@ -21,6 +21,7 @@ export class CrearCita implements OnInit {
     fecha: '',
     hora: '',
     estado: 'Programada', // Valor inicial
+    comentarios: '',
   };
 
   mascotas: Mascota[] = [];

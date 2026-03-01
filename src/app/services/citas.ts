@@ -24,6 +24,12 @@ export class CitaService {
     return of([...this.citas]).pipe(delay(200));
   }
 
+    // Cambiamos any por Cita
+  obtenerCitaPorId(id: number): Observable<Cita> {
+    const cita = this.citas.find(c => c.id_cita === id);
+    return cita ? of({ ...cita }) : throwError(() => new Error('Cita no encontrada'));
+  }
+  
   crearCita(nuevaCita: Cita): Observable<Cita> {
     // Lógica más segura para el ID: busca el máximo y suma 1
     const maxId = this.citas.length > 0 ? Math.max(...this.citas.map(c => c.id_cita || 0)) : 0;
@@ -31,12 +37,6 @@ export class CitaService {
 
     this.citas.push(citaGuardar);
     return of(citaGuardar);
-  }
-
-  // Cambiamos any por Cita
-  obtenerCitaPorId(id: number): Observable<Cita> {
-    const cita = this.citas.find(c => c.id_cita === id);
-    return cita ? of({ ...cita }) : throwError(() => new Error('Cita no encontrada'));
   }
 
   // Cambiamos any por Cita
@@ -65,7 +65,6 @@ export class CitaService {
     if (filtros.estado) {
       filtradas = filtradas.filter(c => c.estado === filtros.estado);
     }
-    // Filtro por nombre de mascota (en lugar de DNI, ya que no lo tenemos en el modelo)
     if (filtros.mascota) { 
     filtradas = filtradas.filter(c =>
       c.mascota.toLowerCase().includes(filtros.mascota.toLowerCase())

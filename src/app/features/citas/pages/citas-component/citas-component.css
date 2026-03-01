@@ -1,5 +1,6 @@
 .citas-container {
     padding: 20px;
+    box-sizing: border-box;
 }
 
 h2 {
@@ -32,6 +33,9 @@ h2 {
     background-color: white;
     padding: 20px;
     margin-bottom: 20px;
+    box-sizing: border-box;
+    width: 100%;           /* Asegura que ocupe el ancho disponible sin salirse */
+    margin-right: 0;
 }
 
 .filter-wrapper h3 {
@@ -46,6 +50,7 @@ h2 {
     flex-wrap: wrap;
     gap: 20px;
     align-items: flex-end;
+    width: 100%;
 }
 
 .form-group {
@@ -243,9 +248,13 @@ tbody td:last-child {
 
 /* Ajuste para móviles */
 @media (max-width: 600px) {
-    .filter-form {
-        flex-direction: column;
-        align-items: stretch;
+    .filter-wrapper {
+        padding: 15px; /* Reducimos un poco el padding en móviles para ganar espacio */
+    }
+    
+    .form-group {
+        flex: 1 1 100%; /* Obliga a cada input a tomar su propia línea al 100% */
+        min-width: 0;    /* IMPORTANTE: permite que el flex-item se encoja menos de su contenido */
     }
 
     .btn-submit {
@@ -259,6 +268,11 @@ tbody td:last-child {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .filter-wrapper {
+        width: 90%;
+        box-sizing: border-box;
     }
 
     .table-container {
