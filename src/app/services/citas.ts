@@ -8,20 +8,27 @@ import { Cita } from '../models/citas.model';
 })
 export class CitaService {
   private citas: Cita[] = [
-    { id_cita: 1, mascota: 'Lucas', veterinario: 'Dr. Pérez', fecha: '2026-03-05', hora: '10:00' },
+    {
+      id_cita: 1,
+      mascota: 'Lucas',
+      veterinario: 'Dr. Pérez',
+      fecha: '2026-03-01',
+      hora: '20:00',
+      estado: 'Programada'
+    },
   ];
 
-  constructor() {}
+  constructor() { }
 
   obtenerCitas(): Observable<Cita[]> {
-    return of([...this.citas]).pipe(delay(200)); 
+    return of([...this.citas]).pipe(delay(200));
   }
 
   crearCita(nuevaCita: Cita): Observable<Cita> {
     // Lógica más segura para el ID: busca el máximo y suma 1
     const maxId = this.citas.length > 0 ? Math.max(...this.citas.map(c => c.id_cita || 0)) : 0;
     const citaGuardar: Cita = { ...nuevaCita, id_cita: maxId + 1 };
-    
+
     this.citas.push(citaGuardar);
     return of(citaGuardar);
   }
@@ -35,7 +42,7 @@ export class CitaService {
   // Cambiamos any por Cita
   actualizarCita(id: number, datosActualizados: Cita): Observable<Cita> {
     const index = this.citas.findIndex(c => c.id_cita === id);
-    
+
     if (index !== -1) {
       this.citas[index] = { ...datosActualizados, id_cita: id };
       return of({ ...this.citas[index] });

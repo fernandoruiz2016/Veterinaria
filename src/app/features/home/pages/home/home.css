@@ -1,3 +1,8 @@
+.home {
+    box-sizing: content-box;
+    padding: 20px;
+}
+
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -6,4 +11,14 @@
     align-items: center;
     box-sizing: border-box;
     padding: 20px;
+}
+
+h2 {
+    color: #7F00E0;
+}
+
+@media screen and (max-width: 769px) {
+    .home {
+        padding: 10px;
+    }
 }

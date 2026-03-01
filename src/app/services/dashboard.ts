@@ -14,19 +14,25 @@ export class DashboardService {
   ) {}
 
   obtenerDashboard(): Observable<any> {
-    return this.mascotaService.obtenerMascotas().pipe(
+  return this.mascotaService.obtenerMascotas().pipe(
     switchMap(mascotas => {
       return this.citaService.obtenerCitas().pipe(
         map(citas => {
-          const hoy = new Date().toISOString().split('T')[0];
+          const date = new Date();
+          const hoy = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+          // Filtramos las citas que son de hoy (Objetos completos)
+          const listaCitasHoy = citas.filter(c => c.fecha === hoy);
+
           return {
-            citas_hoy: citas.filter(c => c.fecha === hoy).length,
+            citas_hoy_lista: listaCitasHoy, // <--- Enviamos el ARRAY para la tabla
+            citas_hoy_count: listaCitasHoy.length, // <--- Enviamos el NÚMERO para las cards
             citas_pendientes: citas.length,
-            total_pacientes: mascotas.length // Ahora viene de la lista real de mascotas
+            total_pacientes: mascotas.length
           };
         })
       );
     })
   );
-  }
+}
 }

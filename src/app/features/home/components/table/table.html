@@ -1,0 +1,26 @@
+<div class="table-container">
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>Hora</th>
+                <th>Mascota</th>
+                <th>Veterinario</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (cita of citas; track cita.id_cita) {
+            <tr>
+                <td>{{ cita.hora }}</td>
+                <td>{{ cita.mascota }}</td> 
+                <td>{{ cita.veterinario }}</td>
+                <td>{{ cita.estado || 'Programada' }}</td>
+            </tr>
+            } @empty {
+              <tr>
+                <td colspan="4" style="text-align: center;">No hay citas registradas</td>
+              </tr>
+            }
+        </tbody>
+    </table>
+</div>
