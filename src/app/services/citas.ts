@@ -55,4 +55,23 @@ export class CitaService {
     this.citas = this.citas.filter(c => c.id_cita !== id);
     return of(this.citas.length < inicial);
   }
+
+  filtrarCitas(filtros: any): Observable<Cita[]> {
+    let filtradas = [...this.citas];
+
+    if (filtros.fecha) {
+      filtradas = filtradas.filter(c => c.fecha === filtros.fecha);
+    }
+    if (filtros.estado) {
+      filtradas = filtradas.filter(c => c.estado === filtros.estado);
+    }
+    // Filtro por nombre de mascota (en lugar de DNI, ya que no lo tenemos en el modelo)
+    if (filtros.mascota) { 
+    filtradas = filtradas.filter(c =>
+      c.mascota.toLowerCase().includes(filtros.mascota.toLowerCase())
+    );
+  }
+
+  return of(filtradas).pipe(delay(100));
+  }
 }
