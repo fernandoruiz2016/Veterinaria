@@ -1,1 +1,40 @@
-<p>crear-cita works!</p>
+<div class="form-container">
+    <h2>Registrar Nueva Cita</h2>
+
+    <form (ngSubmit)="guardarCita()" #citaForm="ngForm">
+        <div class="row">
+            <div class="form-group">
+                <label>Seleccionar Mascota</label>
+                <select name="mascota" [(ngModel)]="nuevaCita.mascota" required>
+                    <option value="" disabled selected>Seleccione una mascota</option>
+                    @for (m of mascotas; track m.id_mascota) {
+                    <option [value]="m.nombre">{{ m.nombre }}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Veterinario</label>
+                <input type="text" name="veterinario" [(ngModel)]="nuevaCita.veterinario" placeholder="Ej. Dr. Pérez"
+                    required />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Fecha</label>
+                <input type="date" name="fecha" [(ngModel)]="nuevaCita.fecha" required />
+            </div>
+
+            <div class="form-group">
+                <label>Hora</label>
+                <input type="time" name="hora" [(ngModel)]="nuevaCita.hora" required />
+            </div>
+        </div>
+
+        <div class="actions">
+            <button type="button" class="btn-cancel" routerLink="/citas">Cancelar</button>
+            <button type="submit" class="btn-save" [disabled]="!citaForm.valid">Guardar Cita</button>
+        </div>
+    </form>
+</div>
