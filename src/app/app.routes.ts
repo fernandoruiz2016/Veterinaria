@@ -7,6 +7,7 @@ import { EditarCita } from './features/citas/pages/editar-cita/editar-cita';
 import { MascotasComponent } from './features/mascotas/pages/mascotas-component/mascotas-component';
 import { CrearMascota } from './features/mascotas/pages/crear-mascota/crear-mascota';
 import { EditarMascota } from './features/mascotas/pages/editar-mascota/editar-mascota';
+import { VerHistorial } from './features/mascotas/pages/ver-historial/ver-historial';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,7 @@ export const routes: Routes = [
             { path: 'mascotas', component: MascotasComponent },
             { path: 'mascotas/crear', component: CrearMascota },
             { path: 'mascotas/editar/:id', component: EditarMascota },
+            { path: 'mascotas/historial/:id', component: VerHistorial },
 
             { path: 'citas', component: CitasComponent },
             { path: 'citas/crear', component: CrearCita },

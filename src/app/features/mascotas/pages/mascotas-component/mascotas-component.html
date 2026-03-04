@@ -46,7 +46,7 @@
                     <td>{{ mascota.email }}</td>
                     <td>
                         <div class="action-buttons">
-                            <button class="btn-historial" [routerLink]="['editar', mascota.id_mascota]">
+                            <button class="btn-historial" [routerLink]="['/mascotas/historial', mascota.id_mascota]">
                                 Ver Historial
                             </button>
                             <button class="btn-edit" [routerLink]="['editar', mascota.id_mascota]">
