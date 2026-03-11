@@ -1,0 +1,171 @@
+<div class="dashboard">
+
+  <!-- ══ HEADER ══ -->
+  <div class="dashboard-header">
+    <div class="header-left">
+      <div class="header-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 3a1 1 0 0 1 1 1v2h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2H9a1 1 0 0 1 0-2h2V7a1 1 0 0 1 1-1z"/></svg> Clínica Veterinaria</div>
+      <h1>Panel de Control</h1>
+      <p class="fecha">{{ fechaHoy }}</p>
+    </div>
+    <div class="header-right">
+      <div class="header-stat">
+        <span class="header-stat-val">{{ citasHoy }}</span>
+        <span class="header-stat-lbl">citas hoy</span>
+      </div>
+      <div class="header-stat">
+        <span class="header-stat-val">{{ totalPacientes }}</span>
+        <span class="header-stat-lbl">pacientes</span>
+      </div>
+      <div class="header-stat">
+        <span class="header-stat-val">{{ totalDuenos }}</span>
+        <span class="header-stat-lbl">dueños</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TARJETAS DE MÉTRICAS ══ -->
+  <section class="stats-grid">
+    <app-home-card title="Citas Hoy"        [body]="citasHoy"        cardColor="#7F00E0" icon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v1H7V3a1 1 0 0 0-1-1zM4 8h16v12H4V8z"/></svg>'></app-home-card>
+    <app-home-card title="Total Citas"      [body]="totalCitas"      cardColor="#E38636" icon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M9 2a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H9zM4 5a2 2 0 0 1 2-2 3 3 0 0 0 3 3h6a3 3 0 0 0 3-3 2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5zm3 4a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H7zm0 4a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2H7z"/></svg>'></app-home-card>
+    <app-home-card title="Citas Atendidas"  [body]="citasAtendidas"  cardColor="#00a854" icon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 1 0-1.06-1.06l-3.75 3.75-1.5-1.5a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.06 0l4.06-4.5z" clip-rule="evenodd"/></svg>'></app-home-card>
+    <app-home-card title="Citas Canceladas" [body]="citasCanceladas" cardColor="#d32f2f" icon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72z" clip-rule="evenodd"/></svg>'></app-home-card>
+    <app-home-card title="Pacientes"        [body]="totalPacientes"  cardColor="#1976d2" icon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><ellipse cx="4.5" cy="8" rx="2" ry="2.5"/><ellipse cx="9" cy="5.5" rx="2" ry="2.5"/><ellipse cx="15" cy="5.5" rx="2" ry="2.5"/><ellipse cx="19.5" cy="8" rx="2" ry="2.5"/><path d="M12 10.5c-3.5 0-7 2.5-7 5.5 0 2.2 1.7 3.5 3.5 3.5h7c1.8 0 3.5-1.3 3.5-3.5 0-3-3.5-5.5-7-5.5z"/></svg>'></app-home-card>
+    <app-home-card title="Dueños"           [body]="totalDuenos"     cardColor="#f57c00" icon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-4.418 0-8 1.79-8 4v1h16v-1c0-2.21-3.582-4-8-4zm9-3a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm1 2h-1.5c-1.008 0-1.97.21-2.83.59C15.13 13.29 16 14.55 16 16v1h7v-1c0-2.21-2.686-3-5-3z"/></svg>'></app-home-card>
+  </section>
+
+  <!-- ══ FILA MEDIA: RESUMEN + ACCESOS RÁPIDOS ══ -->
+  <div class="mid-row">
+
+    <!-- Resumen de estados -->
+    <div class="panel estado-panel">
+      <div class="panel-header">
+        <span class="panel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M5 3H7a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm6 5h2a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zm6-3h2a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></span>
+        <h2>Resumen de Citas</h2>
+      </div>
+
+      <div class="estado-list">
+        <div class="estado-item">
+          <div class="estado-labels">
+            <span class="estado-dot dot-programada"></span>
+            <span class="estado-nombre">Programadas</span>
+            <span class="estado-count">{{ citasProgramadas }}</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill fill-programada" [style.width.%]="pct(citasProgramadas)"></div>
+          </div>
+          <span class="estado-pct">{{ pct(citasProgramadas) }}%</span>
+        </div>
+
+        <div class="estado-item">
+          <div class="estado-labels">
+            <span class="estado-dot dot-atendida"></span>
+            <span class="estado-nombre">Atendidas</span>
+            <span class="estado-count">{{ citasAtendidas }}</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill fill-atendida" [style.width.%]="pct(citasAtendidas)"></div>
+          </div>
+          <span class="estado-pct">{{ pct(citasAtendidas) }}%</span>
+        </div>
+
+        <div class="estado-item">
+          <div class="estado-labels">
+            <span class="estado-dot dot-cancelada"></span>
+            <span class="estado-nombre">Canceladas</span>
+            <span class="estado-count">{{ citasCanceladas }}</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill fill-cancelada" [style.width.%]="pct(citasCanceladas)"></div>
+          </div>
+          <span class="estado-pct">{{ pct(citasCanceladas) }}%</span>
+        </div>
+
+        <div class="estado-item">
+          <div class="estado-labels">
+            <span class="estado-dot dot-noasistio"></span>
+            <span class="estado-nombre">No asistió</span>
+            <span class="estado-count">{{ citasNoAsistio }}</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill fill-noasistio" [style.width.%]="pct(citasNoAsistio)"></div>
+          </div>
+          <span class="estado-pct">{{ pct(citasNoAsistio) }}%</span>
+        </div>
+      </div>
+
+      <div class="total-citas-footer">
+        Total registradas: <strong>{{ totalCitas }}</strong>
+      </div>
+    </div>
+
+    <!-- Accesos rápidos -->
+    <div class="panel accesos-panel">
+      <div class="panel-header">
+        <span class="panel-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143z" clip-rule="evenodd"/></svg></span>
+        <h2>Accesos Rápidos</h2>
+      </div>
+
+      <div class="accesos-grid">
+        <a routerLink="/citas/crear" class="acceso-btn acceso-morado">
+          <span class="acceso-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v1H7V3a1 1 0 0 0-1-1zM4 8h16v12H4V8z"/></svg></span>
+          <span class="acceso-lbl">Nueva Cita</span>
+        </a>
+        <a routerLink="/mascotas/crear" class="acceso-btn acceso-azul">
+          <span class="acceso-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><ellipse cx="4.5" cy="8" rx="2" ry="2.5"/><ellipse cx="9" cy="5.5" rx="2" ry="2.5"/><ellipse cx="15" cy="5.5" rx="2" ry="2.5"/><ellipse cx="19.5" cy="8" rx="2" ry="2.5"/><path d="M12 10.5c-3.5 0-7 2.5-7 5.5 0 2.2 1.7 3.5 3.5 3.5h7c1.8 0 3.5-1.3 3.5-3.5 0-3-3.5-5.5-7-5.5z"/></svg></span>
+          <span class="acceso-lbl">Nueva Mascota</span>
+        </a>
+        <a routerLink="/duenos/crear" class="acceso-btn acceso-naranja">
+          <span class="acceso-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0zM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695z" clip-rule="evenodd"/></svg></span>
+          <span class="acceso-lbl">Nuevo Dueño</span>
+        </a>
+        <a routerLink="/citas" class="acceso-btn acceso-verde">
+          <span class="acceso-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M9 2a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H9zM4 5a2 2 0 0 1 2-2 3 3 0 0 0 3 3h6a3 3 0 0 0 3-3 2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5zm3 4a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H7zm0 4a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2H7z"/></svg></span>
+          <span class="acceso-lbl">Ver Citas</span>
+        </a>
+        <a routerLink="/mascotas" class="acceso-btn acceso-cyan">
+          <span class="acceso-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><ellipse cx="4.5" cy="8" rx="2" ry="2.5"/><ellipse cx="9" cy="5.5" rx="2" ry="2.5"/><ellipse cx="15" cy="5.5" rx="2" ry="2.5"/><ellipse cx="19.5" cy="8" rx="2" ry="2.5"/><path d="M12 10.5c-3.5 0-7 2.5-7 5.5 0 2.2 1.7 3.5 3.5 3.5h7c1.8 0 3.5-1.3 3.5-3.5 0-3-3.5-5.5-7-5.5z"/></svg></span>
+          <span class="acceso-lbl">Ver Mascotas</span>
+        </a>
+        <a routerLink="/duenos" class="acceso-btn acceso-rojo">
+          <span class="acceso-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-4.418 0-8 1.79-8 4v1h16v-1c0-2.21-3.582-4-8-4zm9-3a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm1 2h-1.5c-1.008 0-1.97.21-2.83.59C15.13 13.29 16 14.55 16 16v1h7v-1c0-2.21-2.686-3-5-3z"/></svg></span>
+          <span class="acceso-lbl">Ver Dueños</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ TABLA DE CITAS ══ -->
+  <section class="table-section">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v1H7V3a1 1 0 0 0-1-1zM4 8h16v12H4V8z"/></svg></span>
+        <h2>Citas del Día</h2>
+      </div>
+      <a routerLink="/citas" class="ver-todas">Ver todas →</a>
+    </div>
+
+    <div class="filter-bar">
+      <div class="filter-date">
+        <label for="fechaFiltro"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" style="vertical-align:middle"><path d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v1H7V3a1 1 0 0 0-1-1zM4 8h16v12H4V8z"/></svg> Fecha:</label>
+        <input
+          id="fechaFiltro"
+          type="date"
+          name="fechaFiltro"
+          [(ngModel)]="fechaFiltro"
+          (ngModelChange)="onFechaChange()" />
+        @if (fechaFiltro) {
+          <button class="btn-limpiar" type="button" (click)="limpiarFiltro()">✕ Limpiar</button>
+        }
+      </div>
+      <div class="filter-info">
+        <span class="resultado-count">
+          <strong>{{ citasTabla.length }}</strong> resultado(s)
+        </span>
+      </div>
+    </div>
+
+    <app-table [citas]="citasTabla"></app-table>
+  </section>
+
+</div>

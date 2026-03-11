@@ -1,0 +1,66 @@
+<div class="duenos-container">
+    <div class="subtitle">
+        <h2>Gestión de Dueños</h2>
+        <a routerLink="crear" routerLinkActive="active">+ Crear dueño</a>
+    </div>
+
+    <div class="filter-wrapper">
+        <h3>Buscar por:</h3>
+        <form class="filter-form" (ngSubmit)="onFiltrar()">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="nombre" [(ngModel)]="filtros.nombre" (ngModelChange)="onFiltrar()" placeholder="Nombre del dueño" />
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="text" name="telefono" [(ngModel)]="filtros.telefono" (ngModelChange)="onFiltrar()" placeholder="Teléfono" />
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" name="email" [(ngModel)]="filtros.email" (ngModelChange)="onFiltrar()" placeholder="Correo electrónico" />
+            </div>
+
+            <button type="submit" class="btn-submit">Filtrar</button>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Dirección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (dueno of duenos; track dueno.id_dueno) {
+                <tr>
+                    <td>{{ dueno.nombre }}</td>
+                    <td>{{ dueno.telefono }}</td>
+                    <td>{{ dueno.email }}</td>
+                    <td>{{ dueno.direccion }}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-edit" [routerLink]="['editar', dueno.id_dueno]">
+                                Editar
+                            </button>
+                            <button class="btn-delete" (click)="eliminarDueno(dueno.id_dueno)">
+                                Eliminar
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                } @empty {
+                <tr>
+                    <td colspan="5" style="text-align: center;">No se encontraron dueños</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

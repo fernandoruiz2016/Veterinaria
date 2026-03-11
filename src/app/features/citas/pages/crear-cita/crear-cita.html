@@ -1,0 +1,86 @@
+<div class="form-container">
+    <h2>Registrar Nueva Cita</h2>
+
+    <form (ngSubmit)="guardarCita()" #citaForm="ngForm">
+
+        <!-- MASCOTA -->
+        <div class="field-block">
+            <div class="field-header">
+                <label class="field-label">Mascota</label>
+                <div class="toggle-group">
+                    <button type="button" class="toggle-btn" [class.active]="modoMascota === 'registrada'"
+                        (click)="cambiarModoMascota('registrada')">Registrada</button>
+                    <button type="button" class="toggle-btn" [class.active]="modoMascota === 'nueva'"
+                        (click)="cambiarModoMascota('nueva')">Nueva</button>
+                </div>
+            </div>
+
+            @if (modoMascota === 'registrada') {
+            <select name="mascota" [(ngModel)]="nuevaCita.mascota" required>
+                <option value="" disabled selected>Seleccione una mascota registrada</option>
+                @for (m of mascotas; track m.id_mascota) {
+                <option [value]="m.nombre">{{ m.nombre }} — {{ m.dueno }}</option>
+                }
+            </select>
+            } @else {
+            <input type="text" name="mascota" [(ngModel)]="nuevaCita.mascota"
+                placeholder="Ingrese el nombre de la nueva mascota" required />
+            }
+        </div>
+
+        <!-- DUEÑO -->
+        <div class="field-block">
+            <div class="field-header">
+                <label class="field-label">Dueño / Responsable</label>
+                <div class="toggle-group">
+                    <button type="button" class="toggle-btn" [class.active]="modoDueno === 'registrado'"
+                        (click)="cambiarModoDueno('registrado')">Registrado</button>
+                    <button type="button" class="toggle-btn" [class.active]="modoDueno === 'nuevo'"
+                        (click)="cambiarModoDueno('nuevo')">Nuevo</button>
+                </div>
+            </div>
+
+            @if (modoDueno === 'registrado') {
+            <select name="dueno" [(ngModel)]="nuevaCita.dueno">
+                <option value="">Sin especificar</option>
+                @for (d of duenos; track d.id_dueno) {
+                <option [value]="d.nombre">{{ d.nombre }} — {{ d.telefono }}</option>
+                }
+            </select>
+            } @else {
+            <input type="text" name="dueno" [(ngModel)]="nuevaCita.dueno"
+                placeholder="Ingrese el nombre del dueño" />
+            }
+        </div>
+
+        <!-- VETERINARIO Y FECHA/HORA -->
+        <div class="row">
+            <div class="form-group">
+                <label>Veterinario</label>
+                <input type="text" name="veterinario" [(ngModel)]="nuevaCita.veterinario"
+                    placeholder="Ej. Dr. Pérez" required />
+            </div>
+
+            <div class="form-group">
+                <label>Fecha</label>
+                <input type="date" name="fecha" [(ngModel)]="nuevaCita.fecha" required />
+            </div>
+
+            <div class="form-group">
+                <label>Hora</label>
+                <input type="time" name="hora" [(ngModel)]="nuevaCita.hora" required />
+            </div>
+
+            <div class="form-group">
+                <label>Comentarios (Opcional)</label>
+                <textarea name="comentarios" [(ngModel)]="nuevaCita.comentarios"
+                    placeholder="Notas adicionales" rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button type="button" class="btn-cancel" routerLink="/citas">Cancelar</button>
+            <button type="submit" class="btn-save" [disabled]="!citaForm.valid">Guardar Cita</button>
+        </div>
+    </form>
+</div>
