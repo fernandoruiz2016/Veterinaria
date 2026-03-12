@@ -1,12 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 import { AuthService } from '../../../services/auth';
-import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule, AsyncPipe],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -23,17 +22,21 @@ export class Header implements OnInit, OnDestroy {
     });
   }
 
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  get isLoggedIn$() {
+    return this.authService.isLoggedIn$;
+  }
+
   toggleMenu() {
     this.isOpen = !this.isOpen;
   }
 
-  cerrarSesion(): void {
-    this.isOpen = false;
+  onLogout(): void {
     this.authService.logout();
-    this.router.navigate(['/login']);
-  }
-
-  ngOnDestroy(): void {
-    this.sub?.unsubscribe();
+    this.router.navigateByUrl('/login');
   }
 }

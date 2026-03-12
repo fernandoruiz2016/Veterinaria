@@ -8,9 +8,13 @@
         <a routerLink="mascotas" routerLinkActive="active">Mascotas</a>
         <a routerLink="duenos" routerLinkActive="active">Dueños</a>
         <a routerLink="citas" routerLinkActive="active">Citas</a>
-    </div>
-    <div class="navBar-footer">
-        <span *ngIf="usuario" class="navBar-usuario">{{ usuario }}</span>
-        <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
+
+        @if (isLoggedIn$ | async) {
+            <button type="button" class="logout-btn" (click)="onLogout()">
+                Cerrar sesión
+            </button>
+        } @else {
+            <a routerLink="/login" routerLinkActive="active">Iniciar sesión</a>
+        }
     </div>
 </nav>
