@@ -11,11 +11,15 @@ import { VerHistorial } from './features/mascotas/pages/ver-historial/ver-histor
 import { DuenosComponent } from './features/duenos/pages/duenos-component/duenos-component';
 import { CrearDueno } from './features/duenos/pages/crear-dueno/crear-dueno';
 import { EditarDueno } from './features/duenos/pages/editar-dueno/editar-dueno';
+import { Login } from './features/auth/pages/login/login';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
+    { path: 'login', component: Login },
     {
         path: '',
         component: Layout,
+        canActivate: [authGuard],
         children: [
             { path: '', component: Home },
 

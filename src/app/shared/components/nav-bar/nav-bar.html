@@ -9,4 +9,8 @@
         <a routerLink="duenos" routerLinkActive="active">Dueños</a>
         <a routerLink="citas" routerLinkActive="active">Citas</a>
     </div>
+    <div class="navBar-footer">
+        <span *ngIf="usuario" class="navBar-usuario">{{ usuario }}</span>
+        <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
+    </div>
 </nav>

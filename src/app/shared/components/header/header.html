@@ -9,7 +9,11 @@
 <!-- Sidebar -->
 <nav class="sidebar" [class.open]="isOpen">
     <button type="button" class="btn btn-outline-light btn-cerrar" (click)="toggleMenu()">X</button>
-    <a routerLink="/" routerLinkActive="active">Inicio</a>
-    <a routerLink="mascotas" routerLinkActive="active">Mascotas</a>
-    <a routerLink="citas" routerLinkActive="active">Citas</a>
+    <a routerLink="/" routerLinkActive="active" (click)="toggleMenu()">Inicio</a>
+    <a routerLink="mascotas" routerLinkActive="active" (click)="toggleMenu()">Mascotas</a>
+    <a routerLink="citas" routerLinkActive="active" (click)="toggleMenu()">Citas</a>
+    <div class="sidebar-footer">
+        <span *ngIf="usuario" class="sidebar-usuario">{{ usuario }}</span>
+        <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
+    </div>
 </nav>
