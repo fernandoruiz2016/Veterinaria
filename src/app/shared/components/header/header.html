@@ -1,10 +1,23 @@
 <img src="logo.avif" alt="Logo">
 <h1>Clínica Veterinaria Pet Care</h1>
-<button class="hamburger" [class.active]="isOpen" (click)="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+
+<div class="header-actions">
+    @if (isLoggedIn$ | async) {
+        <button type="button" class="logout-header-btn" (click)="onLogout()">
+            Cerrar sesión
+        </button>
+    } @else {
+        <a routerLink="/login" class="login-header-link" routerLinkActive="active">
+            Iniciar sesión
+        </a>
+    }
+
+    <button class="hamburger" [class.active]="isOpen" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</div>
 
 <!-- Sidebar -->
 <nav class="sidebar" [class.open]="isOpen">
@@ -12,4 +25,12 @@
     <a routerLink="/" routerLinkActive="active">Inicio</a>
     <a routerLink="mascotas" routerLinkActive="active">Mascotas</a>
     <a routerLink="citas" routerLinkActive="active">Citas</a>
+
+    @if (isLoggedIn$ | async) {
+        <button type="button" class="logout-sidebar-btn" (click)="onLogout(); toggleMenu()">
+            Cerrar sesión
+        </button>
+    } @else {
+        <a routerLink="/login" routerLinkActive="active" (click)="toggleMenu()">Iniciar sesión</a>
+    }
 </nav>
