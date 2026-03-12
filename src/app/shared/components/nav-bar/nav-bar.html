@@ -8,5 +8,13 @@
         <a routerLink="mascotas" routerLinkActive="active">Mascotas</a>
         <a routerLink="duenos" routerLinkActive="active">Dueños</a>
         <a routerLink="citas" routerLinkActive="active">Citas</a>
+
+        @if (isLoggedIn$ | async) {
+            <button type="button" class="logout-btn" (click)="onLogout()">
+                Cerrar sesión
+            </button>
+        } @else {
+            <a routerLink="/login" routerLinkActive="active">Iniciar sesión</a>
+        }
     </div>
 </nav>
