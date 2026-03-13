@@ -21,8 +21,10 @@ export class Login {
 
   iniciarSesion(): void {
     this.error = '';
-    const ok = this.authService.login(this.usuario, this.password);
-    if (ok) {
+
+    // Credenciales fijas para pruebas
+    if (this.usuario === 'AdminClinica01' && this.password === 'admin123') {
+      localStorage.setItem('sesion', 'activa'); // simulamos sesión
       this.router.navigate(['/']);
     } else {
       this.error = 'Credenciales inválidas. Ingrese usuario y contraseña.';
