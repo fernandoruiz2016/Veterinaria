@@ -49,7 +49,7 @@ src/app/
 1. Clonar el repositorio:
 
 ```Bash
-    git clone [https://github.com/tu-usuario/nombre-del-repo.git](https://github.com/tu-usuario/nombre-del-repo.git)
+    git clone [https://github.com/fernandoruiz2016/Veterinaria]
 ```
 
 2. Instalar dependencias:
